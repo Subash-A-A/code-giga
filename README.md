@@ -1,2 +1,2 @@
 # code-giga
- Escape the code world by making use of your giga brain.
+Two friends are seperated by a mysterious force. Coordinate and escape the mysterious realm!
