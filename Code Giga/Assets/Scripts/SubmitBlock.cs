@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class SubmitBlock : MonoBehaviour
 {
     [SerializeField] private PlayerTestMovement _player;

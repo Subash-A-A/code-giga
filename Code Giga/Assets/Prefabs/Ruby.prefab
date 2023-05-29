@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1773194227763553023}
   - component: {fileID: 4575465394035119669}
   - component: {fileID: 4575465394035119664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GFX
   m_TagString: Ruby
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 4894517631868827782}
   - component: {fileID: 4894517631868827776}
   - component: {fileID: 4894517631868827783}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ruby
   m_TagString: Untagged
   m_Icon: {fileID: 0}

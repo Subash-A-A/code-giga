@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class CoderMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;

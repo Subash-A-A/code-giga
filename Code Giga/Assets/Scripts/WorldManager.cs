@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class WorldManager : MonoBehaviour
 {
     [SerializeField] MouseLook _look;
@@ -7,6 +6,10 @@ public class WorldManager : MonoBehaviour
     [SerializeField] Color _coderWorldBgColor;
     [SerializeField] float _colorLerpSpeed = 2f;
     [SerializeField] PlayerTestMovement _player;
+
+    [Header("Player Ghosts")]
+    [SerializeField] Transform _playerGhost;
+    [SerializeField] Transform _coderGhost;
 
     private Color _bgColor;
     private void Start()
@@ -51,5 +54,15 @@ public class WorldManager : MonoBehaviour
     private void BGColorLerper()
     {
         Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, _bgColor, _colorLerpSpeed * Time.deltaTime);
+    }
+
+    public void ResetPlayers()
+    {
+        _playerGhost.position = Vector3.zero;
+        _playerGhost.rotation = Quaternion.identity;
+        _player.ResetRotation();
+
+        _coderGhost.position = new Vector3(-100, 0, 0);
+        _coderGhost.rotation = Quaternion.identity;
     }
 }

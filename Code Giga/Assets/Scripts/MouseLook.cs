@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class MouseLook : MonoBehaviour
 {   
     [SerializeField] private Transform _playerTransform;

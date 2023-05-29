@@ -5,33 +5,34 @@ public class Level : MonoBehaviour
     [SerializeField] Transform _rubies;
     [SerializeField] int _level = 1;
     [SerializeField] Vector3[] _rubyPos;
+
     public bool _completed = false;
     private PlayerTestMovement _player;
     private LevelManager _manager;
 
-    private void OnEnable()
+    private void Awake()
     {
-        _completed = false;
-        if(_rubies.childCount <= 0)
-        {
-            InitLevel();
-        }
-    }
-
-    private void Start()
-    {
-        _player = FindObjectOfType<PlayerTestMovement>();
         _manager = GetComponentInParent<LevelManager>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if(_rubies.childCount <= 0 && !_player.isRunningCode && !_completed)
+        _completed = false;
+        if(_rubies.childCount < _rubyPos.Length)
         {
-            _completed = true;
-            Debug.Log("Level " + _level + " Completed!");
-            _manager.ToNextLevel();
+            while (_rubies.childCount > 0)
+            {
+                DestroyImmediate(_rubies.GetChild(0).gameObject);
+            }
+            InitLevel();
         }
+        // _manager.ResetPlayers();
+    }
+
+    private void Start()
+    {   
+        _player = FindObjectOfType<PlayerTestMovement>();
+        _manager.ResetPlayers();
     }
 
     private void InitLevel()
@@ -45,6 +46,23 @@ public class Level : MonoBehaviour
         {
             GameObject ruby = Instantiate(_manager.GetRubyGameObject(), _rubies);
             ruby.transform.position = pos;
+        }
+    }
+
+    public void CheckWinCondition()
+    {
+        if (_rubies.childCount <= 0 && !_player.isRunningCode && !_completed)
+        {
+            Debug.Log("Level " + _level + " Completed!");
+            _completed = true;
+            _manager.ResetPlayers();
+            _manager.ShowNextLevelPopUp();
+        }
+        else
+        {
+            Debug.Log("Try Again!");
+            _manager.ResetPlayers();
+            _manager.ShowTryAgainPopUp();
         }
     }
 }

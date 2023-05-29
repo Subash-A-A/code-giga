@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class BlockPosition : MonoBehaviour
 {
     [SerializeField] private GameObject[] _blocks;

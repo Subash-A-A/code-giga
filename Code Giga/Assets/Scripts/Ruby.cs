@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class Ruby : MonoBehaviour
 {
     [SerializeField] private GameObject _rubySplash;

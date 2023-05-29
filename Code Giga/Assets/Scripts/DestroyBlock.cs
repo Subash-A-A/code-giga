@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DestroyBlock : MonoBehaviour
 {
+    [SerializeField] GameObject _deleteCanvas;
     private bool _coderOnBlock = false;
     private BlockPosition _codeParent;
 
@@ -12,6 +13,9 @@ public class DestroyBlock : MonoBehaviour
 
     private void Update()
     {
+        _deleteCanvas.SetActive(_coderOnBlock);
+        _deleteCanvas.transform.LookAt(Camera.main.transform.position);
+
         if (_coderOnBlock)
         {
             if (Input.GetMouseButtonDown(0))

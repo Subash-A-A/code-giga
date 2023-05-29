@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7118317077346534574}
   - component: {fileID: 4737200714645475360}
   - component: {fileID: 575380081080261997}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,3 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ea4b201e86f0a40bd7ac1f07d7a063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _deleteCanvas: {fileID: 0}

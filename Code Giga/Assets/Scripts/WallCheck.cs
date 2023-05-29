@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class WallCheck : MonoBehaviour
 {
     [SerializeField] private Transform[] _wallCheckSensors;
