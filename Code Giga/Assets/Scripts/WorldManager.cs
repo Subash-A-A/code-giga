@@ -6,6 +6,7 @@ public class WorldManager : MonoBehaviour
     [SerializeField] Color _playerWorldBgColor;
     [SerializeField] Color _coderWorldBgColor;
     [SerializeField] float _colorLerpSpeed = 2f;
+    [SerializeField] PlayerTestMovement _player;
 
     private Color _bgColor;
     private void Start()
@@ -17,7 +18,7 @@ public class WorldManager : MonoBehaviour
     {
         BGColorLerper();
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !_player.isRunningCode)
         {
             SwitchPlayer();
         }
@@ -26,6 +27,12 @@ public class WorldManager : MonoBehaviour
     public void SwitchPlayer()
     {
         _look.SwitchPlayer();
+        SwichWorld();
+    }
+
+    public void SwitchCamera(bool focusCoder)
+    {
+        _look.Focus(focusCoder);
         SwichWorld();
     }
 

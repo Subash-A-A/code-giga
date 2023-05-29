@@ -7,6 +7,9 @@ public class PlayerTestMovement : MonoBehaviour
     [SerializeField] private Animator _anim;
     [SerializeField] private float _executionDelay = 0.5f;
     [SerializeField] private Transform _codeBlockParent;
+    
+    public bool isRunningCode = false;
+
     private WallCheck _check;
     private float _playerYRot = 0f;
 
@@ -17,6 +20,7 @@ public class PlayerTestMovement : MonoBehaviour
  
     public void TestMove()
     {
+        isRunningCode = true;
         StartCoroutine(ExecuteMoves(1));
     }
 
@@ -72,12 +76,24 @@ public class PlayerTestMovement : MonoBehaviour
 
     IEnumerator ExecuteMoves(int i)
     {
+        if(i <= 1)
+        {
+            // This is just to prevent the player to execute the instruction immediately.
+            // 2s is for the world to switch.
+            yield return new WaitForSeconds(2f);
+        }
+
         if(i < _codeBlockParent.childCount)
         {
             Move(_codeBlockParent.GetChild(i).name);
             yield return new WaitForSeconds(_executionDelay);
             StartCoroutine(ExecuteMoves(i + 1));
         }
-        yield return new WaitForSeconds(0);
+        else
+        {
+            yield return new WaitForSeconds(0);
+            _codeBlockParent.GetComponent<BlockPosition>().ResetBlocks();
+            isRunningCode = false;
+        }
     }
 }

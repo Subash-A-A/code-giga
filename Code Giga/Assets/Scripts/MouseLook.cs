@@ -63,4 +63,9 @@ public class MouseLook : MonoBehaviour
     {
         return _isCoder;
     }
+
+    public void Focus(bool isCoder)
+    {
+        _isCoder = isCoder;
+    }
 }
